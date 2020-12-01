@@ -91,7 +91,6 @@ function getInterface(){
         onclick="modifierCanevas(this.id);"
         >' . ($nomPhoto==='retour à la carte'?'retour à la carte':pathinfo($nomPhoto)['filename'])  . '</li>';
     }
-    var_dump($listePhotos);
     return $code.= '</ul></div>';
 }
 
@@ -104,6 +103,7 @@ function getFormulaireEnvoi(){
     return '
         <form method="post" enctype="multipart/form-data" action="index.php">
             <label for="photo">Sélectionnez la photo à envoyer</label>
+            <input type="text" value="Z4FG6" name="codeCarte">
             <input type="file" id="photo" name="photo" accept="image/*,.pdf">
             <button>Envoyer</button>
         </form>';
