@@ -13,6 +13,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$fakeData = array();
+$fakeData['Z4FG6']=array(
+    'coordonnées'=>array(
+        'latitude'=>45.770617010400656,
+        'longitude'=>4.828867547445176
+    ),
+    'zoom'=>15
+);
+
+
 /**
  * L'application est très simple et gère les aspects suivants :
  * - la page a-t-elle reçu une valeur « upload » ? si oui, on affiche un formulaire d'envoi de photo
@@ -32,7 +42,7 @@ $codeHTML = '<!doctype html>
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
             integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-            crossorigin=""/
+            crossorigin=""
             >
         <!-- Make sure you put this AFTER Leaflet\'s CSS -->
         <script
@@ -56,11 +66,18 @@ if( isset($_GET['envoi']) && $_GET['envoi']=='image' ){ // A-t-on reçu une dema
 
 
 echo $codeHTML .= '
-    </body>
+    </body>' . getJSData($fakeData) . '
     <script src="cime_city.js"></script>
 </html>';
 
 
+function getJSData($fakeData=array()){
+    $codeHTML = '<script>';
+    $codeHTML .= 'let origine_latitude = ' . $fakeData['Z4FG6']['coordonnées']['latitude'] . ';' . "\n";
+    $codeHTML .= 'let origine_longitude = ' . $fakeData['Z4FG6']['coordonnées']['longitude'] . ';' . "\n";
+    $codeHTML .= 'let origine_zoom = ' . $fakeData['Z4FG6']['zoom'] . ';' . "\n";
+    return $codeHTML . '</script>';
+}
 
 function getCarte(){
     $code = '<div id="blocPrincipal">';
@@ -91,7 +108,6 @@ function getInterface(){
         onclick="modifierCanevas(this.id);"
         >' . ($nomPhoto==='retour à la carte'?'retour à la carte':pathinfo($nomPhoto)['filename'])  . '</li>';
     }
-    var_dump($listePhotos);
     return $code.= '</ul></div>';
 }
 
@@ -104,6 +120,7 @@ function getFormulaireEnvoi(){
     return '
         <form method="post" enctype="multipart/form-data" action="index.php">
             <label for="photo">Sélectionnez la photo à envoyer</label>
+            <input type="text" value="Z4FG6" name="codeCarte">
             <input type="file" id="photo" name="photo" accept="image/*,.pdf">
             <button>Envoyer</button>
         </form>';
