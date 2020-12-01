@@ -9,7 +9,7 @@
  *                                              GESTION DE LA CARTE
  **********************************************************************************************************************/
 // On crée une carte que l'on centre et zoome sur la région lyonnaise.
-let mymap = L.map('carte_cime_city').setView([45.770617010400656, 4.828867547445176], 15);
+let mymap = L.map('carte_cime_city').setView([origine_latitude, origine_longitude], origine_zoom);
 
 L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
     maxZoom: 18,
