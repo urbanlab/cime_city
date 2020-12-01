@@ -17,3 +17,21 @@ L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x
         '<a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
 }).addTo(mymap);
+
+/***********************************************************************************************************************
+ *                                              CODE GÉNÉRALISTE
+ **********************************************************************************************************************/
+
+/**
+ * Modifie le contenu principal et le remplace soit par la carte, soit par une image.
+ * @param idPhoto
+ */
+function modifierCanevas(idPhoto=''){
+    if(idPhoto==='retour à la carte'){
+        document.getElementById('emplacement_image').style.display = 'None';
+        document.getElementById('carte_cime_city').style.display = 'Block';
+    } else {
+        document.getElementById('carte_cime_city').style.display = 'None';
+        document.getElementById('emplacement_image').style.display = 'Block';
+    }
+}

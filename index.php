@@ -27,6 +27,7 @@ $codeHTML = '<!doctype html>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Cime City</title>
         <link rel="stylesheet" href="cime_city.css">
+        <link rel="shortcut icon" href="#" /> <!-- virer l erreur favicon sous ff -->
         <link
             rel="stylesheet"
             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -62,12 +63,39 @@ echo $codeHTML .= '
 
 
 function getCarte(){
-    $code = '<div id="carte_cime_city" ></div>';
-    return $code;
+    $code = '<div id="blocPrincipal">';
+    $code .= '<div class="canevas" id="emplacement_image"></div>';
+    $code .= '<div class="canevas" id="carte_cime_city" ></div>';
+    $code .= '</div>';
+    return $code . getInterface();
+}
+
+function getInterface(){
+    /*
+     * L'interface va chercher la liste des photos et un clic sur un objet de la liste mettra la photo  à la pace de
+     * la carte.
+     */
+    $listePhotos = array('retour à la carte'); // élément toujours présent.
+    $photos = scandir(getcwd() . '/photos/');
+    foreach ($photos as $photo){
+        if ($photo!='.' && $photo!= '..'){
+            array_push($listePhotos, pathinfo($photo)['filename']);
+        }
+    }
+    $code = '<div id="interface"><ul>';
+
+    foreach ($listePhotos as $nomPhoto){
+        $code.= '<li 
+        class="nom_photo"
+        id="' . $nomPhoto . '"
+        onclick="modifierCanevas(this.id);"
+        >' . $nomPhoto . '</li>';
+    }
+    return $code.= '</ul></div>';
 }
 
 function stockerImage(){
-    // todo vérifier taille, type (image, pdf), etc...
+    // todo vérifier taille (en Mb), dimensions, nom (caractères autorisés) type (image, pdf), etc...
     move_uploaded_file($_FILES['photo']['tmp_name'], getcwd() . '/photos/' . basename($_FILES['photo']['name']));
 }
 
