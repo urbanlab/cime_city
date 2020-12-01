@@ -13,6 +13,15 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+$fakeData = array();
+$fakeData['Z4FG6']=array(
+    'coordonnées'=>array(
+        'latitude'=>45.770617010400656,
+        'longitude'=>4.828867547445176
+    )
+);
+
+
 /**
  * L'application est très simple et gère les aspects suivants :
  * - la page a-t-elle reçu une valeur « upload » ? si oui, on affiche un formulaire d'envoi de photo
