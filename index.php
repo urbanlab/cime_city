@@ -79,7 +79,7 @@ function getInterface(){
     $photos = scandir(getcwd() . '/photos/');
     foreach ($photos as $photo){
         if ($photo!='.' && $photo!= '..'){
-            array_push($listePhotos, pathinfo($photo)['filename']);
+            array_push($listePhotos, $photo);
         }
     }
     $code = '<div id="interface"><ul>';
@@ -89,8 +89,9 @@ function getInterface(){
         class="nom_photo"
         id="' . $nomPhoto . '"
         onclick="modifierCanevas(this.id);"
-        >' . $nomPhoto . '</li>';
+        >' . ($nomPhoto==='retour à la carte'?'retour à la carte':pathinfo($nomPhoto)['filename'])  . '</li>';
     }
+    var_dump($listePhotos);
     return $code.= '</ul></div>';
 }
 

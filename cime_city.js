@@ -33,5 +33,6 @@ function modifierCanevas(idPhoto=''){
     } else {
         document.getElementById('carte_cime_city').style.display = 'None';
         document.getElementById('emplacement_image').style.display = 'Block';
+        document.getElementById('emplacement_image').style.backgroundImage = "url('photos/" + idPhoto + "')";
     }
 }
