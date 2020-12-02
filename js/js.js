@@ -7153,7 +7153,7 @@ var jardinscollectifs = {
 																																																																																}
 
 var pluviometrie = $.ajax({
-																																																																																	url: 'https://download.data.grandlyon.com/wfs/grandlyon?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=adr_voie_lieu.adrlieusurf&outputFormat=application/json; subtype=geojson&SRSNAME=EPSG:4171&startIndex=0&count=100',
+url: 'https://download.data.grandlyon.com/wfs/grandlyon?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=adr_voie_lieu.adrlieusurf&outputFormat=application/json; subtype=geojson&SRSNAME=EPSG:4171&startIndex=0&count=100',
 																																																																																	dataType: 'json',
 																																																																																	success: function(data){
 																																																																																		L.geoJSON(pluviometrie.responseJSON).addTo(pluvio)
