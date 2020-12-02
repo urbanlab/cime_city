@@ -32,11 +32,11 @@ var map = L.map('map', {
 var baseLayers = {
 
 	"Niveaux de gris": grayscale,
-	"Street View<hr>Collectivité<hr>": streets,
-
+	"Street View<p style='font-size:1.4em'>Collectivité</p>": streets,
 };
 
 var overlays = {
+
 	"Orthophotos infrarouge": ortho,
 	"Arbres d'alignement": lyon,
 	"Collèges Henri Barbusse & Ampère":colleges,
@@ -56,6 +56,8 @@ var collectivite = {
 };
 
 L.control.layers(baseLayers,overlays,{collapsed:false}).addTo(map);
+
+
 
 var orthodata = $.ajax({
 	url: 'https://download.data.grandlyon.com/wfs/grandlyon?SERVICE=WFS&VERSION=2.0.0&request=GetFeature&typename=ima_gestion_images.imaortho2018ecw5km8cmcc46ir&SRSNAME=EPSG:4171&outputFormat=application/json; subtype=geojson&count=100&startIndex=0',

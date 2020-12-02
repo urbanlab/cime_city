@@ -23,7 +23,7 @@ function getInterface(){
     $code = '<div id="interface"><ul>';
 
     foreach ($listePhotos as $nomPhoto){
-        $code.= '<li 
+        $code.= '<li
         class="nom_photo"
         id="' . $nomPhoto . '"
         onclick="modifierCanevas(this.id);"
@@ -37,4 +37,3 @@ function stockerImage(){
     move_uploaded_file($_FILES['photo']['tmp_name'], getcwd() . '/photos/' . $_POST['code'].'_'.basename($_FILES['photo']['name']));
     // basename($_FILES['photo']['name'])
 }
-

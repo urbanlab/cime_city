@@ -69,9 +69,6 @@ function getFormulaireEnvoi(){
   </label>
   </div>
   <div class="send">
-
-  <input type="text" value="Z4FG6" name="code">
-
   <input type="text" value="Z4FG6" name="codeCarte" maxlength="5">
 
   <input type="hidden" name="action" value="upload">
