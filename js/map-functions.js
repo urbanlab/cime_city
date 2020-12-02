@@ -23,9 +23,6 @@ $( document ).ready(function() {
 
       // zoom the map to the rectangle bounds
       map.fitBounds(bounds);
-
-      // <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
-      $('#ext1').modal().open();
       
       // $.ajax({
       //   type: "GET",
