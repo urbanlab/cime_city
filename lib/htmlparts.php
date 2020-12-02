@@ -33,6 +33,28 @@ function getFooter($fakeData) {
   <script type="text/javascript" src="js/jquery-ui.js"></script>
   <script type="text/javascript" src="js/js.js"></script>
   <script src="js/map-functions.js"></script>
+  '.
+    // @TODO : Liste des layers contribués dans le rep photo à faire
+    '
+    <script>
+    $( document ).ready(function() {
+        var visible = false;
+
+        var imageUrl = "/photos/A1B2C_calque_habitant.png",
+        imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
+        var ol = L.imageOverlay(imageUrl, imageBounds);
+        $("#contribs").on("click", function() {
+            if (!visible) {
+                ol.addTo(map);
+                visible = true;
+            } else {
+                ol.remove();
+                visible = false;
+            }
+
+        });
+    });
+    </script>
   </html>';
 }
 
@@ -55,15 +77,6 @@ function getCarte(){
   <button id="imprimer" style="display:none;">Imprimer</button>
   </div>
   ';
-
-  // @TODO : Liste des layers contribués dans le rep photo à faire
-  $code .='
-  <script>
-  var imageUrl = "/photos/A1B2C_calque_habitant.png",
-    imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
-    L.imageOverlay(imageUrl, imageBounds).addTo(map);
-   </script>
-   '; 
 
   return $code; // . getInterface();
 }

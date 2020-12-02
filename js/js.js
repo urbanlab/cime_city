@@ -11,8 +11,6 @@ var jardinscoll = L.layerGroup();
 var pluvio = L.layerGroup();
 var contribs = L.layerGroup();
 
-
-
 var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
 'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -48,7 +46,7 @@ var overlays = {
 	"Lieux surfaciques":lieuxsurfa,
 	"Pluviométrie<hr>Contributions citoyennes<hr>":pluvio,
 	"Jardins collectifs":jardinscoll,
-	"contributions citoyennes":contribs,
+	"<span id='contribs'>contributions citoyennes</span>":contribs,
 };
 
 var collectivite = {
