@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.map{
+  width:100vw;
+  height: 100vh;
+  z-index:-1;
+}
+
+body {
+  width:100vw;
+  height:100vh;
+}
+
+
+@media only screen and (max-width: 414px) {
+
+  @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+  body {
+    width:414px;
+    height:736px;
+    font-family: 'Quicksand',sans-serif;
+  }
+
+  .container-screen {
+    width:414px;
+    height:736px;
+    display:flex;
+    flex-direction: column;
+  }
+
+
+  #logo {
+    background-image: url('../img/logo.svg');
+    height: 128px;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+  }
+
+  h1{
+    margin-left:10%;
+    color:#439775;
+    border-top:2px solid #61D095;
+    margin-left:10%;
+    width:80%;
+    padding-top:10px;
+  }
+
+  .text p{
+    margin-left:10%;
+    color:#439775;
+    border-bottom:2px solid #61D095;
+    margin-left:10%;
+    width:80%;
+    padding-bottom:20px;
+    font-size:1.5em;
+  }
+
+  .cgu p{
+    margin-left:10%;
+    color:#439775;
+    margin-left:10%;
+    width:80%;
+    padding-bottom:5px;
+    font-size:0.7em;
+  }
+
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin-left:10%;
+  }
+
+  /* Hide the browser's default checkbox */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: #eee;
+    border-radius: 15px;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #61D095;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+    left: 13px;
+    top: 9px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .send input{
+    margin-left:10%;
+    border:none;
+    justify-content: center;
+  }
+
+  .send button{
+    margin-left:10%;
+    margin-top:10%;
+    height:40px;
+    border-radius:20px;
+    width:80%;
+    background:#61D095;
+    text-decoration: none;
+    border: none;
+    color:white;
+  }
+
+  .send input[type=hidden]{
+    display:none;
+  }
+
+  .send input[type=text]{
+    padding-bottom:20px;
+    color:#61D095;
+    justify-content: center;
+    margin-left:45%;
+  }
+
+  .send label {
+    padding:8px;
+    cursor: pointer;
+    margin-left:10%;
+    background:#61D095;
+    color:white;
+    border-radius:25px;
+    padding-left:90px;
+    padding-right:90px;
+  }
+
+
+
+  #photo {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+
+}
