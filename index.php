@@ -33,24 +33,7 @@ $fakeData['Z4FG6']=array(
  * - la page n'a rien reçu : affichage de la carte avec ses layers (images)
  */
 
-$codeHTML = '<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <title>Canographia</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/uploadpicture.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-  crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-  crossorigin=""></script>
-
-</head>
-
-<body>';
+$codeHTML = getHeader();
 
 //
 // mini Controleur d'action
@@ -62,7 +45,8 @@ if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'upload': 
             stockerImage();
-            $codeHTML .= getCarte();
+            $codeHTML .= getMessageOk();
+            $_GET['nav'] = "";
         break;
     }
 }
@@ -75,12 +59,13 @@ switch ($_GET['nav']) {
         break;        
         
     default:
-        $codeHTML .= getAccueil();
+        // $codeHTML .= getAccueil();
         break;
     }
 } else {
-    $codeHTML .= getAccueil();
-    
+    if(!isset($_POST['action']) || $_POST['action'] == "") {
+        $codeHTML .= getAccueil();
+    }
 }
 
 // Footer

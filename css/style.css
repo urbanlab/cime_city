@@ -12,7 +12,7 @@ body {
 }
 
 
-@media only screen and (max-width: 414px) {
+@media only screen and (min-width: 414px) {
 
   @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 
