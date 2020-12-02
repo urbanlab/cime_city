@@ -10,6 +10,7 @@
  */
 
 require_once 'lib/upload.php';
+require_once 'lib/htmlparts.php';
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
