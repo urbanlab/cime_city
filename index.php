@@ -9,6 +9,8 @@
  * Time: 09:40
  */
 
+require_once 'lib/upload.php';
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -32,96 +34,87 @@ $fakeData['Z4FG6']=array(
 
 $codeHTML = '<!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Cime City</title>
-        <link rel="stylesheet" href="cime_city.css">
-        <link rel="shortcut icon" href="#" /> <!-- virer l erreur favicon sous ff -->
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-            integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-            crossorigin=""
-            >
-        <!-- Make sure you put this AFTER Leaflet\'s CSS -->
-        <script
-            src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-            integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-            crossorigin="">
-        </script>
-    </head>
-    <body>';
+<head>
+  <meta charset="utf-8">
+  <title>Canographia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/uploadpicture.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+  integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+  crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+  integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+  crossorigin=""></script>
 
+</head>
 
-if( isset($_GET['envoi']) && $_GET['envoi']=='image' ){ // A-t-on reçu une demande formulaire ?
-    // C'est une demande d'envoi de formulaire
-    $codeHTML .= getFormulaireEnvoi();
-} elseif ( isset($_FILES['photo'])){ // A-t-on reçu une photo ?
-    stockerImage();
-    $codeHTML .= getCarte();
-} else {
-    $codeHTML .= getCarte();
+<body>';
+
+// '<!doctype html>
+// <html lang="fr">
+//     <head>
+//         <meta charset="utf-8" />
+//         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+//         <title>Cime City</title>
+//         <link rel="stylesheet" href="cime_city.css">
+//         <link rel="shortcut icon" href="#" /> <!-- virer l erreur favicon sous ff -->
+//         <link
+//             rel="stylesheet"
+//             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+//             integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+//             crossorigin=""
+//             >
+//         <!-- Make sure you put this AFTER Leaflet\'s CSS -->
+//         <script
+//             src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+//             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+//             crossorigin="">
+//         </script>
+//     </head>
+//     <body>';
+
+//
+// mini Controleur d'action
+// le parammètre de controle de navigation s'appelle 'nav"
+// Le point d'entrée de l'application est donc "index.php?nav=" ou "index.php" ou "index.php?nav=index"
+
+// Traitements
+if (isset($_POST['action'])) {
+    switch ($_POST['action']) {
+        case 'upload': 
+            stockerImage();
+            $codeHTML .= getCarte();
+        break;
+    }
 }
 
+// Navigation
+if (isset($_GET['nav'])) {
+switch ($_GET['nav']) {
+    // case 'image':
+    //     $codeHTML .= getFormulaireEnvoi();
+    //     break;        
+        
+    default:
+        $codeHTML .= getAccueil();
+        break;
+    }
+} else {
+    $codeHTML .= getAccueil();
+    
+}
 
-echo $codeHTML .= '
-    </body>' . getJSData($fakeData) . '
-    <script src="cime_city.js"></script>
+// Footer
+$codeHTML .='
+</body>' . getJSData($fakeData) . '
+<script src="cime_city.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/js.js"></script>
+
+</body>
 </html>';
 
-
-function getJSData($fakeData=array()){
-    $codeHTML = '<script>';
-    $codeHTML .= 'let origine_latitude = ' . $fakeData['Z4FG6']['coordonnées']['latitude'] . ';' . "\n";
-    $codeHTML .= 'let origine_longitude = ' . $fakeData['Z4FG6']['coordonnées']['longitude'] . ';' . "\n";
-    $codeHTML .= 'let origine_zoom = ' . $fakeData['Z4FG6']['zoom'] . ';' . "\n";
-    return $codeHTML . '</script>';
-}
-
-function getCarte(){
-    $code = '<div id="blocPrincipal">';
-    $code .= '<div class="canevas" id="emplacement_image"></div>';
-    $code .= '<div class="canevas" id="carte_cime_city" ></div>';
-    $code .= '</div>';
-    return $code . getInterface();
-}
-
-function getInterface(){
-    /*
-     * L'interface va chercher la liste des photos et un clic sur un objet de la liste mettra la photo  à la pace de
-     * la carte.
-     */
-    $listePhotos = array('retour à la carte'); // élément toujours présent.
-    $photos = scandir(getcwd() . '/photos/');
-    foreach ($photos as $photo){
-        if ($photo!='.' && $photo!= '..'){
-            array_push($listePhotos, $photo);
-        }
-    }
-    $code = '<div id="interface"><ul>';
-
-    foreach ($listePhotos as $nomPhoto){
-        $code.= '<li 
-        class="nom_photo"
-        id="' . $nomPhoto . '"
-        onclick="modifierCanevas(this.id);"
-        >' . ($nomPhoto==='retour à la carte'?'retour à la carte':pathinfo($nomPhoto)['filename'])  . '</li>';
-    }
-    return $code.= '</ul></div>';
-}
-
-function stockerImage(){
-    // todo vérifier taille (en Mb), dimensions, nom (caractères autorisés) type (image, pdf), etc...
-    move_uploaded_file($_FILES['photo']['tmp_name'], getcwd() . '/photos/' . basename($_FILES['photo']['name']));
-}
-
-function getFormulaireEnvoi(){
-    return '
-        <form method="post" enctype="multipart/form-data" action="index.php">
-            <label for="photo">Sélectionnez la photo à envoyer</label>
-            <input type="text" value="Z4FG6" name="codeCarte">
-            <input type="file" id="photo" name="photo" accept="image/*,.pdf">
-            <button>Envoyer</button>
-        </form>';
-}
+// Deliver HTML to browser
+echo $codeHTML;
