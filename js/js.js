@@ -30,7 +30,7 @@ var map = L.map('map', {
 var baseLayers = {
 
 	"Niveaux de gris": grayscale,
-	"Street View<p style='font-size:1.4em'>Collectivité</p>": streets,
+	"Street View<p style='font-size:1.4em'>Données Data.GrandLyon</p><hr>": streets,
 };
 
 var overlays = {
@@ -44,7 +44,7 @@ var overlays = {
 	"Batiments & cadastres":cada,
 	"Trottoirs & Chaussées":trott,
 	"Lieux surfaciques":lieuxsurfa,
-	"Pluviométrie<hr>Contributions citoyennes<hr>":pluvio,
+	"Pluviométrie<hr><p style='font-size:1.4em'>Contributions citoyennes</p>":pluvio,
 	"Jardins collectifs":jardinscoll,
 	"<span id='contribs'>contributions citoyennes</span>":contribs,
 };
