@@ -33,9 +33,13 @@ function getFooter($fakeData) {
   <script type="text/javascript" src="js/jquery-ui.js"></script>
   <script type="text/javascript" src="js/js.js"></script>
   <script src="js/map-functions.js"></script>
-  '.
+  '. generateOverlay() . '
+  </html>';
+}
+
+function generateOverlay() {
     // @TODO : Liste des layers contribués dans le rep photo à faire
-    '
+    $code = '
     <script>
     $( document ).ready(function() {
         var visible = false;
@@ -51,11 +55,12 @@ function getFooter($fakeData) {
                 ol.remove();
                 visible = false;
             }
-
         });
     });
     </script>
-  </html>';
+    ';
+
+    return $code;
 }
 
 function getAccueil() {
