@@ -10,10 +10,18 @@ function getJSData($fakeData=array()){
 
 
 function getCarte(){
-    $code = '<div id="blocPrincipal">';
-    $code .= '<div class="canevas" id="emplacement_image"></div>';
-    $code .= '<div class="canevas" id="carte_cime_city" ></div>';
-    $code .= '</div>';
+    $code = '
+    <div id = "map" style="width:100vw; height: 80vh"></div>
+
+    <div id="footer" style = "margin:2% 20% 2% 20%; border: solid black 1px; padding: 1%">
+      <div id="gps"></div><br>
+      <div id="code"></div><br>
+    </div>';
+
+    // $code = '<div id="blocPrincipal">';
+    // $code .= '<div class="canevas" id="emplacement_image"></div>';
+    // $code .= '<div class="canevas" id="carte_cime_city" ></div>';
+    // $code .= '</div>';
     return $code . getInterface();
 }
 

@@ -51,29 +51,6 @@ $codeHTML = '<!doctype html>
 
 <body>';
 
-// '<!doctype html>
-// <html lang="fr">
-//     <head>
-//         <meta charset="utf-8" />
-//         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-//         <title>Cime City</title>
-//         <link rel="stylesheet" href="cime_city.css">
-//         <link rel="shortcut icon" href="#" /> <!-- virer l erreur favicon sous ff -->
-//         <link
-//             rel="stylesheet"
-//             href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-//             integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-//             crossorigin=""
-//             >
-//         <!-- Make sure you put this AFTER Leaflet\'s CSS -->
-//         <script
-//             src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-//             integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-//             crossorigin="">
-//         </script>
-//     </head>
-//     <body>';
-
 //
 // mini Controleur d'action
 // le parammètre de controle de navigation s'appelle 'nav"
@@ -92,9 +69,9 @@ if (isset($_POST['action'])) {
 // Navigation
 if (isset($_GET['nav'])) {
 switch ($_GET['nav']) {
-    // case 'image':
-    //     $codeHTML .= getFormulaireEnvoi();
-    //     break;        
+    case 'carte':
+        $codeHTML .= getCarte();
+        break;        
         
     default:
         $codeHTML .= getAccueil();
@@ -112,7 +89,7 @@ $codeHTML .='
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
 <script type="text/javascript" src="js/js.js"></script>
-
+<script src="js/map-functions.js"></script>
 </body>
 </html>';
 
