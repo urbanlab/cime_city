@@ -84,15 +84,7 @@ switch ($_GET['nav']) {
 }
 
 // Footer
-$codeHTML .='
-</body>' . getJSData($fakeData) . '
-<script src="cime_city.js"></script>
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui.js"></script>
-<script type="text/javascript" src="js/js.js"></script>
-<script src="js/map-functions.js"></script>
-</body>
-</html>';
+$codeHTML .= getFooter($fakeData);
 
 // Deliver HTML to browser
 echo $codeHTML;

@@ -1,14 +1,17 @@
 $( document ).ready(function() {
     let zone = null;
     const charList = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const lat_offset = 0.007;
+    const lng_offset = 0.01;
 
     map.on("click", function(e) {
       console.log(e.latlng);
-      $("#gps").html("<span>Latitude : "+e.latlng.lat+"</span>, <span>Longitude : "+e.latlng.lng+"</span>");
-      $("#code").html("<span>Code : " + randomString(5, charList) + "</span>");
+      $("#gps").html("<span><u>Latitude</u> : de "+e.latlng.lat+" à " + e.latlng.lat + lat_offset + "</span>, <span><u>Longitude</u> : de "+e.latlng.lng+" à "+e.latlng.lng + lng_offset+"</span>");
+      $("#code").html("<span><u>Code</u> : " + randomString(5, charList) + "</span>");
+      $('#imprimer').show();
 
       // define rectangle geographical bounds
-      var bounds = [[e.latlng.lat, e.latlng.lng], [e.latlng.lat + 0.007 , e.latlng.lng + 0.01]];
+      var bounds = [[e.latlng.lat, e.latlng.lng], [e.latlng.lat + lat_offset, e.latlng.lng + lng_offset]];
 
       // create an orange rectangle
       if (zone != null) {
@@ -21,9 +24,8 @@ $( document ).ready(function() {
       // zoom the map to the rectangle bounds
       map.fitBounds(bounds);
 
-      // console.log(map.getPixelBounds());
-      // console.log(map.getScaleZoom());
-      // console.log(map.getZoomScale());
+      // <p><a href="#ex1" rel="modal:open">Open Modal</a></p>
+      $('#ext1').modal().open();
       
       // $.ajax({
       //   type: "GET",
