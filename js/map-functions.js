@@ -1,8 +1,8 @@
 $( document ).ready(function() {
     let zone = null;
     const charList = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const lat_offset = 0.007;
-    const lng_offset = 0.01;
+    var lat_offset = 0.007;
+    var lng_offset = 0.01;
 
     map.on("click", function(e) {
       console.log(e.latlng);
@@ -11,7 +11,7 @@ $( document ).ready(function() {
       $('#imprimer').show();
 
       // define rectangle geographical bounds
-      var bounds = [[e.latlng.lat, e.latlng.lng], [e.latlng.lat + lat_offset, e.latlng.lng + lng_offset]];
+      var bounds = [[e.latlng.lat, e.latlng.lng], [parseFloat(e.latlng.lat) + lat_offset, parseFloat(e.latlng.lng) + lng_offset]];
 
       // create an orange rectangle
       if (zone != null) {

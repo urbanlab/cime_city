@@ -69,7 +69,7 @@ function getFormulaireEnvoi(){
   </label>
   </div>
   <div class="send">
-  <input type="text" value="Z4FG6" name="codeCarte">
+  <input type="text" value="Z4FG6" name="code">
   <input type="hidden" name="action" value="upload">
   <label for="photo">Sélectionnez la photo à envoyer</label>
   <input type="file" id="photo" name="photo" accept="image/png, image/jpeg image/*,.pdf">
