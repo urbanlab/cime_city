@@ -137,3 +137,20 @@ h1{
   border: none;
   color:white;
 }
+
+.send label {
+  padding:8px;
+  cursor: pointer;
+  margin-left:10%;
+  background:#61D095;
+  color:white;
+  border-radius:25px;
+  padding-left:60px;
+  padding-right:63px;
+}
+
+#upload-photo {
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+}
