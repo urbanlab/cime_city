@@ -55,7 +55,17 @@ function getCarte(){
   <button id="imprimer" style="display:none;">Imprimer</button>
   </div>
   ';
-  return $code . getInterface();
+
+  // @TODO : Liste des layers contribués dans le rep photo à faire
+  $code .='
+  <script>
+  var imageUrl = "/photos/A1B2C_calque_habitant.png",
+    imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
+    L.imageOverlay(imageUrl, imageBounds).addTo(map);
+   </script>
+   '; 
+
+  return $code; // . getInterface();
 }
 
 function getFormulaireEnvoi(){
