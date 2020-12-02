@@ -47,7 +47,7 @@ h1{
   color:#439775;
   margin-left:10%;
   width:80%;
-  padding-bottom:20px;
+  padding-bottom:5px;
   font-size:0.7em;
 }
 
@@ -138,6 +138,17 @@ h1{
   color:white;
 }
 
+.send input[type=hidden]{
+  display:none;
+}
+
+.send input[type=text]{
+  padding-bottom:20px;
+  color:#61D095;
+  justify-content: center;
+  margin-left:45%;
+}
+
 .send label {
   padding:8px;
   cursor: pointer;
@@ -145,11 +156,13 @@ h1{
   background:#61D095;
   color:white;
   border-radius:25px;
-  padding-left:60px;
-  padding-right:63px;
+  padding-left:90px;
+  padding-right:90px;
 }
 
-#upload-photo {
+
+
+#photo {
   opacity: 0;
   position: absolute;
   z-index: -1;
