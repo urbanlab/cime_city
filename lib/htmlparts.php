@@ -42,29 +42,29 @@ function getFooter($fakeData) {
 }
 
 function generateOverlay() {
-    // @TODO : Liste des layers contribués dans le rep photo à faire
-    $code = '
-    <script>
-    $( document ).ready(function() {
-        var visible = false;
+  // @TODO : Liste des layers contribués dans le rep photo à faire
+  $code = '
+  <script>
+  $( document ).ready(function() {
+    var visible = false;
 
-        var imageUrl = "/photos/A1B2C_calque_habitant.png",
-        imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
-        var ol = L.imageOverlay(imageUrl, imageBounds);
-        $("#contribs").on("click", function() {
-            if (!visible) {
-                ol.addTo(map);
-                visible = true;
-            } else {
-                ol.remove();
-                visible = false;
-            }
-        });
+    var imageUrl = "/photos/A1B2C_calque_habitant.png",
+    imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
+    var ol = L.imageOverlay(imageUrl, imageBounds);
+    $("#contribs").on("click", function() {
+      if (!visible) {
+        ol.addTo(map);
+        visible = true;
+      } else {
+        ol.remove();
+        visible = false;
+      }
     });
-    </script>
-    ';
+  });
+  </script>
+  ';
 
-    return $code;
+  return $code;
 }
 
 function getAccueil() {
@@ -78,11 +78,20 @@ function getAccueil() {
 
 function getCarte(){
   $code = '
-  <div id = "map" style="width:100vw; height: 80vh">
+  <div id = "map" style="width:100vw; height: 100vh;">
+
+  <div id="popup">
+  <img src="img/map-atelier.png">
+  <p id="close-popup">X</p><span id="title-popup">IMPRIMER UNE CARTE</span>
+  <p id="monCode"></p>
+  <button id="printfinal" style="display:flex;">Imprimer la carte</button>
+  </div>
   <div id="coords">
   <div id="gps"></div><br>
   <div id="code"></div><br>
-  <button id="imprimer" style="display:none;">Imprimer</button>
+  <button id="prepare" style="display:none;">Préparer un atelier</button>
+  </div>
+  <div id="backgroundsidebar">
   </div>
   </div>
   ';
