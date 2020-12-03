@@ -74,17 +74,18 @@ function getAccueil() {
 
 function getCarte(){
   $code = '
-  <div id = "map" style="width:100vw; height: 80vh"></div>
-
-  <div id="coords" style="width:90vw; margin: 10px 10% 0 10%; border: solid black 1px; padding: 3%">
+  <div id = "map" style="width:100vw; height: 80vh">
+  <div id="coords">
   <div id="gps"></div><br>
   <div id="code"></div><br>
   <button id="imprimer" style="display:none;">Imprimer</button>
+  </div>
   </div>
   ';
 
   return $code; // . getInterface();
 }
+
 
 function getFormulaireEnvoi(){
   return '
@@ -97,9 +98,6 @@ function getFormulaireEnvoi(){
   </label>
   </div>
   <div class="send">
-
-  <input type="text" value="Z4FG6" name="code">
-
   <input type="text" value="Z4FG6" name="codeCarte" maxlength="5">
 
   <input type="hidden" name="action" value="upload">

@@ -9,6 +9,40 @@
 body {
   width:100vw;
   height:100vh;
+  overflow-x:hidden;
+}
+
+.leaflet-control-layers {
+  font-family: 'Quicksand';
+  font-size:13px;
+  padding-bottom:20px;
+  height:46vh;
+
+}
+.leaflet-control-layers-expanded  {
+  font-family: 'Quicksand';
+  font-size:13px;
+  padding-bottom:20px;
+}
+
+.leaflet-control{
+  font-family: 'Quicksand';
+  font-size:13px;
+}
+
+#coords{
+  z-index:900;
+  font-family: 'quicksand';
+  background:white;
+  margin-left:87%;
+  margin-top:25%;
+  border-radius:5px;
+  background:white;
+  font-size:13px;
+  width:180px; 
+  margin:3;
+  padding:1%;
+  position:absolute;
 }
 
 
@@ -98,7 +132,7 @@ body {
     height: 35px;
     width: 35px;
     background-color: #eee;
-    border-radius: 15px;
+    border-radius: 35px;
   }
 
   /* On mouse-over, add a grey background color */
