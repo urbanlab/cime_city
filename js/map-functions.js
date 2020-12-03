@@ -4,6 +4,14 @@ $( document ).ready(function() {
     var lat_offset = 0.007;
     var lng_offset = 0.01;
 
+    // Bouton "imprimer"
+    $('#imprimer').on("click", function(e) {
+      e.stopPropagation();
+      // 1. Cropper le bout de carte sélectionné.
+      // 2. envoyer au serveur pour enregistrer les data des géolocalisation
+      //
+    });
+
     map.on("click", function(e) {
       console.log(e.latlng);
       $("#gps").html("<span><u>Latitude</u> : de "+e.latlng.lat+" à " + e.latlng.lat + lat_offset + "</span>, <span><u>Longitude</u> : de "+e.latlng.lng+" à "+e.latlng.lng + lng_offset+"</span>");

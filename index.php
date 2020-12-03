@@ -63,6 +63,8 @@ switch ($_GET['nav']) {
         break;
     }
 } else {
+    // page d'index
+    $codeHTML .= getHeaderSite();
     if(!isset($_POST['action']) || $_POST['action'] == "") {
         $codeHTML .= getAccueil();
     }

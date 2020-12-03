@@ -17,12 +17,16 @@ function getHeader() {
   crossorigin=""></script>
   </head>
   <body>
+  ';
+}
+
+function getHeaderSite() {
+  return '
   <div id="logo"></div>
   <div id="title"><h1>Le projet</h1></div>
   <div class="text">
   <p>Canographia est un service de cartographie participative dans le cadre du plan Canopée de la Métropole de Lyon : planter 300 000 arbres d’ici 2030.</p>
-  </div>
-  ';
+  </div>';
 }
 
 function getFooter($fakeData) {
@@ -98,7 +102,7 @@ function getFormulaireEnvoi(){
   </label>
   </div>
   <div class="send">
-  <input type="text" value="Z4FG6" name="codeCarte" maxlength="5">
+  <input type="text" value="Z4FG6" name="code" maxlength="5">
 
   <input type="hidden" name="action" value="upload">
   <label for="photo">Sélectionnez la photo à envoyer</label>
