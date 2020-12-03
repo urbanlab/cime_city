@@ -45,6 +45,7 @@ if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'upload': 
             stockerImage();
+            $codeHTML .= getHeaderSite();
             $codeHTML .= getMessageOk();
             $_GET['nav'] = "";
         break;

@@ -33,6 +33,8 @@ function getInterface(){
 }
 
 function stockerImage(){
+    // print_r($_POST);
+    // die();
     // todo vérifier taille (en Mb), dimensions, nom (caractères autorisés) type (image, pdf), etc...
     move_uploaded_file($_FILES['photo']['tmp_name'], getcwd() . '/photos/' . $_POST['code'].'_'.basename($_FILES['photo']['name']));
     // basename($_FILES['photo']['name'])
