@@ -48,7 +48,7 @@ function generateOverlay() {
   $( document ).ready(function() {
     var visible = false;
 
-    var imageUrl = "/photos/A1B2C_calque_habitant.png",
+    var imageUrl = "./photos/A1B2C_calque_habitant.png",
     imageBounds = [ [45.76485355887718, 4.817247390747071], [45.771853558877180, 4.8272473907470710] ];
     var ol = L.imageOverlay(imageUrl, imageBounds);
     $("#contribs").on("click", function() {
